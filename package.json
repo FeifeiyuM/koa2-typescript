@@ -1,0 +1,40 @@
+{
+	"name": "koats",
+	"version": "1.0.0",
+	"description": "koa base on typescript",
+	"main": "app.js",
+	"scripts": {
+		"start": "pm2 start config/pm2.dev.config.json && pm2 logs",
+		"deploy": "pm2 start config/pm2.prod.config.json",
+		"migrate": "pm2 start migrations/index.ts && pm2 logs",
+		"del": "pm2 delete all"
+	},
+	"keywords": [
+		"koa",
+		"typescript",
+		"orm",
+		"migration"
+	],
+	"author": "feifeiyu",
+	"license": "MIT",
+	"dependencies": {
+		"ioredis": "^2.5.0",
+		"koa": "^2.0.1",
+		"koa-bodyparser": "^4.0.0",
+		"koa-csrf": "^3.0.4",
+		"koa-log4": "^2.2.0",
+		"koa-mount": "^2.0.0",
+		"koa-nunjucks-promise": "^1.1.1",
+		"koa-router": "next",
+		"koa-session2": "^2.1.1",
+		"koa-static": "^3.0.0",
+		"migrate-orm2": "^2.0.0",
+		"mysql": "^2.13.0",
+		"orm": "^3.2.3",
+		"typescript": "^2.2.1",
+		"uid-safe": "^2.1.3"
+	},
+	"devDependencies": {
+		"@types/node": "^7.0.5"
+	}
+}

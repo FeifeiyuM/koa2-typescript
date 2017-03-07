@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>{% block title%}{% endblock %}</title>
+    {% block styleLink %}{% endblock %}
+    <style>
+    body{
+      font-family: "Microsoft Yahei",tahoma,arial,"Hiragino Sans GB","helvetica neue",helvetica,arial,Sans-serif,"Hiragino Sans GB","Hiragino Sans GB W3","SimHei";
+      margin: 0px;
+      background-color: #f5f5f5;
+      position: relative;
+    }
+    </style>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+    <!-- 打包后，静态文件路径 -->
+    <script type="text/javascript">
+        (function(win) {
+         var doc = win.document;
+         var docEl = doc.documentElement;
+         var tid;
+         function refreshRem() {
+            var width = docEl.getBoundingClientRect().width;
+            var rem = width / 37.5; // 将屏幕宽度分成10份， 1份为1rem
+            docEl.style.fontSize = rem + 'px';
+         }
+         win.addEventListener('resize', function() {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+         }, false);
+         win.addEventListener('pageshow', function(e) {
+            if (e.persisted) {
+               clearTimeout(tid);
+               tid = setTimeout(refreshRem, 300);
+            }
+         }, false);
+         refreshRem();
+      })(window);
+    </script>
+  </body>
+</html>
