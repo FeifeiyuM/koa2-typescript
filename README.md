@@ -22,3 +22,10 @@
 
 ## 框架介绍 ##
 博客： [基于 KOA2 + Typescript 的 web 开发框架介绍](https://feifeiyum.github.io/2017/03/06/koa2-web-typescript-md/)
+
+## 问题 ##
+工程可能在 windows 下运行存在问题。[Windows - pm2 install typescript](https://github.com/Unitech/pm2/issues/2675)。 
+### 解决方案 ###
+1、可以先把整个工程通过 typescript 把 ts 脚本解释成 js 脚本。 进入 src 目录， 执行 tsc app.ts  
+2、将 config 目录下的 pm2.dev.config.json 和 pm2.prod.config.json 两个文件中的配置 "script": "./src/app.ts", 改成 "script": "./src/app.js"  
+3、正常启动工程 (npm start)
